@@ -1,0 +1,29 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: sans-serif;
+  background: #ddd;
+}
+
+.panel {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #fff;
+  padding: 10px;
+  border-radius: 6px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+canvas {
+  width: 100vw;
+  height: 100vh;
+  display: block;
+}

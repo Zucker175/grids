@@ -2,13 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Grids</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grid Generator</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="panel">
+    <h1>Grid Generator</h1>
+    <label>Columns: <input type="number" id="columns" value="6" min="1" max="20" /></label>
+    <label>Gutter (px): <input type="number" id="gutter" value="20" min="0" /></label>
+    <label>Margin (px): <input type="number" id="margin" value="40" min="0" /></label>
+    <button onclick="drawGrid()">Update Grid</button>
+    <button onclick="downloadPDF()">Download PDF</button>
+  </div>
   <canvas id="gridCanvas"></canvas>
-  <a href="/" class="back-link">← back</a>
   <script src="script.js"></script>
 </body>
 </html>

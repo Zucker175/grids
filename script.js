@@ -1,46 +1,39 @@
 const canvas = document.getElementById("gridCanvas");
 const ctx = canvas.getContext("2d");
 
-let width, height;
-let mouse = { x: 0, y: 0 };
-
-function resize() {
-  width = window.innerWidth;
-  height = window.innerHeight;
-  canvas.width = width;
-  canvas.height = height;
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 }
 
-window.addEventListener("resize", resize);
-window.addEventListener("mousemove", e => {
-  mouse.x = e.clientX;
-  mouse.y = e.clientY;
+window.addEventListener("resize", () => {
+  resizeCanvas();
+  drawGrid();
 });
 
-resize();
+function drawGrid() {
+  resizeCanvas();
+  const columns = parseInt(document.getElementById("columns").value, 10);
+  const gutter = parseInt(document.getElementById("gutter").value, 10);
+  const margin = parseInt(document.getElementById("margin").value, 10);
 
-function draw() {
-  ctx.clearRect(0, 0, width, height);
-  const spacing = 30;
+  const width = canvas.width - margin * 2;
+  const colWidth = (width - gutter * (columns - 1)) / columns;
 
-  for (let x = 0; x < width; x += spacing) {
-    for (let y = 0; y < height; y += spacing) {
-      const dx = x - mouse.x;
-      const dy = y - mouse.y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      const maxDist = 180;
-      const scale = Math.max(0, 1 - dist / maxDist);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      const size = 2 + scale * 6;
-
-      ctx.beginPath();
-      ctx.arc(x, y, size / 2, 0, Math.PI * 2);
-      ctx.fillStyle = "white";
-      ctx.fill();
-    }
+  for (let i = 0; i < columns; i++) {
+    const x = margin + i * (colWidth + gutter);
+    ctx.fillStyle = "#f88";
+    ctx.fillRect(x, 100, colWidth, canvas.height - 200);
   }
 
-  requestAnimationFrame(draw);
+  ctx.strokeStyle = "#aaa";
+  ctx.strokeRect(margin, 100, width, canvas.height - 200);
 }
 
-draw();
+function downloadPDF() {
+  alert("PDF export not implemented in this demo.");
+}
+
+drawGrid();

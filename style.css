@@ -1,0 +1,28 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #000;
+  overflow: hidden;
+  height: 100%;
+  cursor: none;
+}
+
+canvas {
+  display: block;
+}
+
+.back-link {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  color: white;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-size: 16px;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
+.back-link:hover {
+  opacity: 1;
+}
